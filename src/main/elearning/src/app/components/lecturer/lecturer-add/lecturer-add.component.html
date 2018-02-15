@@ -1,0 +1,72 @@
+<div class="container-fluid">
+    <div class="row">
+    	<div class="col-md-12 text-center">
+    		<div class="alert alert-success"*ngIf="lecturerAdded">Successfully add</div>
+    	</div>
+        <div class="col-md-12">
+			<form [formGroup]="myform" (ngSubmit)="onSubmit(myform)">
+				<fieldset>
+	    			<legend>Add Lecturer informations:</legend>
+				    <div class="form-group" [ngClass]="{
+			        'has-error': lecturername.invalid && (lecturername.dirty || lecturername.touched),
+			        'has-success': lecturername.valid && (lecturername.dirty || lecturername.touched)
+			      }">
+					    <label for="lecturername" class="col-sm-4">Lecturer name</label>
+					    <input type="text" class="form-control col-sm-8" name="lecturername" formControlName="lecturername"
+					    id="lecturername"  placeholder="Lecturer name">
+				    </div>
+				    <div class="form-group" [ngClass]="{
+			        'has-error': lecturerlab.invalid && (lecturerlab.dirty || lecturerlab.touched),
+			        'has-success': lecturerlab.valid && (lecturerlab.dirty || lecturerlab.touched)
+			      }">
+					    <label for="lecturerlab" class="col-sm-4">Lecturer lab</label>
+					    <input type="text" class="form-control col-sm-8"  name="title" formControlName="lecturerlab" 
+					    id="lecturerlab"  placeholder="Lecturer lab" >
+				    </div>
+				    <div class="form-group" [ngClass]="{
+			        'has-error': lecturercontact.invalid && (lecturercontact.dirty || lecturercontact.touched),
+			        'has-success': lecturercontact.valid && (lecturercontact.dirty || lecturercontact.touched)
+			      }">
+					    <label for="lecturercontact" class="col-sm-4">Lecturer contact</label>
+					    <input type="text" class="form-control col-sm-8"  name="lecturercontact" formControlName="lecturercontact"
+					    id="lecturercontact"  placeholder="lecturer contact">
+				    </div>
+
+				    <div class="form-group" [ngClass]="{
+			        'has-error': lectureraddress.invalid && (lecturercontact.dirty || lectureraddress.touched),
+			        'has-success': lectureraddress.valid && (lectureraddress.dirty || lectureraddress.touched)
+			      }">
+					    <label for="lectureraddress" class="col-sm-4">Lecturer Address</label>
+					    <input type="text" class="form-control col-sm-8"  name="lectureraddress" formControlName="lectureraddress"
+					    id="lectureraddress"  placeholder="lecturer Address">
+				    </div>
+				    
+					<div class="form-group" [ngClass]="{
+			        'has-error': lecturertitle.invalid && (lecturertitle.dirty || lecturertitle.touched),
+			        'has-success': lecturertitle.valid && (lecturertitle.dirty || lecturertitle.touched)
+			      }">
+					    <label for="lecturertitle" class="col-sm-4">Classroom</label>
+					    <select name="lecturertitle" class="form-control col-sm-8" formControlName="lecturertitle"
+					    >
+					        <option *ngFor="let title of titles" [value]="title.id">  
+					        {{title.titleName}}
+					        </option>
+					    </select>
+					</div>
+					
+					<div class="row">
+						<div class="col-xs-6">					
+						</div>
+						<div class="col-xs-6">
+							<button type="Submit" [disabled]="!myform.valid"
+							class="btn btn-md btn-success pull-right">Submit</button>
+							<a routerLink="/lecturer" class="btn btn-md btn-danger pull-right">Cancel</a>					
+
+						</div>
+					</div>
+				</fieldset>
+
+			</form>
+		</div>
+	</div>
+</div>

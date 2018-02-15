@@ -1,0 +1,122 @@
+<div class="container-fluid">
+    <div class="row">
+    	<div class="col-md-12 text-center">
+    		<div class="alert alert-success"*ngIf="courseAdded">Successfully add</div>
+    	</div>
+        <div class="col-md-12">
+			<form [formGroup]="myform" (ngSubmit)="onSubmit(myform)">
+				<fieldset>
+	    			<legend>Add Course informations:</legend>
+				    <div class="form-group" [ngClass]="{
+			        'has-error': coursecode.invalid && (coursecode.dirty || coursecode.touched),
+			        'has-success': coursecode.valid && (coursecode.dirty || coursecode.touched)
+			      }">
+					    <label for="coursecode" class="col-sm-4">Course Code</label>
+					    <input type="text" class="form-control col-sm-8" name="coursecode" formControlName="coursecode"
+					    id="coursecode"  placeholder="Course code">
+				    </div>
+				    <div class="form-group" [ngClass]="{
+			        'has-error': coursetitle.invalid && (coursetitle.dirty || coursetitle.touched),
+			        'has-success': coursetitle.valid && (coursetitle.dirty || coursetitle.touched)
+			      }">
+					    <label for="coursename" class="col-sm-4">Course name</label>
+					    <input type="text" class="form-control col-sm-8"  name="title" formControlName="coursetitle" 
+					    id="coursename"  placeholder="Course name" >
+				    </div>
+				    <div class="form-group" [ngClass]="{
+			        'has-error': coursecredit.invalid && (coursecredit.dirty || coursecredit.touched),
+			        'has-success': coursecredit.valid && (coursecredit.dirty || coursecredit.touched)
+			      }">
+					    <label for="credit" class="col-sm-4">Course credit</label>
+					    <input type="number" class="form-control col-sm-8"  name="credit" formControlName="coursecredit"
+					    id="credit"  placeholder="2">
+				    </div>
+				    <div class="form-group" [ngClass]="{
+			        'has-error': courselevel.invalid && (courselevel.dirty || courselevel.touched),
+			        'has-success': courselevel.valid && (courselevel.dirty || courselevel.touched)
+			      }">
+					    <label for="level" class="col-sm-4">Level(Master1 or Master 2)</label>
+					    <select name="level" class="form-control col-sm-8" formControlName="courselevel"
+					     >
+					        <option *ngFor="let level of levels" [value]="level.value">  
+					        {{level.display}}
+					        </option>
+					    </select>
+					</div>
+					<div class="form-group" [ngClass]="{
+			        'has-error': courseclassroom.invalid && (courseclassroom.dirty || courseclassroom.touched),
+			        'has-success': courseclassroom.valid && (courseclassroom.dirty || courseclassroom.touched)
+			      }">
+					    <label for="classroom" class="col-sm-4">Classroom</label>
+					    <select name="classroom" class="form-control col-sm-8" formControlName="courseclassroom"
+					    >
+					        <option *ngFor="let classroom of classrooms" [value]="classroom.id">  
+					        {{classroom.classroomName}}
+					        </option>
+					    </select>
+					</div>
+					<div class="form-group" [ngClass]="{
+			        'has-error': courselecturer.invalid && (courselecturer.dirty || courselecturer.touched),
+			        'has-success': courselecturer.valid && (courselecturer.dirty || courselecturer.touched)
+			      }">
+					    <label for="lecturer" class="col-sm-4">Lecturer</label>
+					    <select name="lecturer" class="form-control col-sm-8" formControlName="courselecturer"
+					    >
+					        <option *ngFor="let lecturer of lecturers" [value]="lecturer.id">  
+					        {{lecturer.lecturerName}}
+					        </option>
+					    </select>
+					</div>
+					<div class="form-group" [ngClass]="{
+			        'has-error': coursesemester.invalid && (coursesemester.dirty || coursesemester.touched),
+			        'has-success': coursesemester.valid && (coursesemester.dirty || coursesemester.touched)
+			      }">
+					    <label for="semester" class="col-sm-4">Semester</label>
+					    <select name="semester" class="form-control col-sm-8" formControlName="coursesemester"
+					    >
+					        <option *ngFor="let semester of semesters" [value]="semester.id">  
+					        {{semester.semesterName}}
+					        </option>
+					    </select>
+					</div>
+					<div class="form-group" [ngClass]="{
+			        'has-error': courseweek.invalid && (courseweek.dirty || courseweek.touched),
+			        'has-success': courseweek.valid && (courseweek.dirty || courseweek.touched)
+			      }">
+					    <label for="week" class="col-sm-4">Week days</label>
+					    <select name="week" class="form-control col-sm-8" formControlName="courseweek"
+					    >
+					        <option *ngFor="let week of weeks; let i = index" [value]="i+1">  
+					        {{week}}
+					        </option>
+					    </select>
+					</div>
+
+					<div class="form-group" [ngClass]="{
+			        'has-error': courseslot.invalid && (courseslot.dirty || courseslot.touched),
+			        'has-success': courseslot.valid && (courseslot.dirty || courseslot.touched)
+			      }">
+					    <label for="slot" class="col-sm-4">Time Slot</label>
+					    <select name="slot" class="form-control col-sm-8" formControlName="courseslot"
+					    >
+					        <option *ngFor="let slot of slots; let i = index" [value]="i+1">  
+					        {{slot}}
+					        </option>
+					    </select>
+					</div>
+					<div class="row">
+						<div class="col-xs-6">					
+						</div>
+						<div class="col-xs-6">
+							<button type="Submit" [disabled]="!myform.valid"
+							class="btn btn-md btn-success pull-right">Submit</button>
+							<a routerLink="/courses" class="btn btn-md btn-danger pull-right">Cancel</a>					
+
+						</div>
+					</div>
+				</fieldset>
+
+			</form>
+		</div>
+	</div>
+</div>

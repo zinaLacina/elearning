@@ -1,0 +1,46 @@
+<div>
+	<div style="margin-top: 20px;">
+		<a routerLink="/lecturer"><i class="fa fa-long-arrow-left"></i> Go Back</a>
+		<span> / </span>
+		<a (click)="onSelect(lecturer)" style="cursor: pointer">Edit</a>
+
+	</div>
+		{{lecturer?.lecturerName}}
+	<div class="row">
+		<div class="col-md-6 col-xs-12">
+
+			<div class="panel panel-default">
+			  <div class="panel-heading"><h5>Lecturer</h5></div>
+			  <div class="panel-body">
+			    <img [src]="'http://localhost:8080/image/lecturer/defaultuser.png'" class="img-responsive" />
+			    <ul class="list-group">
+				  <li class="list-group-item"><strong>NOM:</strong> {{lecturer?.lecturerName}}</li>
+				  <li class="list-group-item"><strong>TITLE:</strong> {{lecturer?.title.titleName}}</li>
+				  <li class="list-group-item"><strong>LAB NAME:</strong> {{lecturer?.lecturerLab}}</li>
+				  <li class="list-group-item"><strong>ADDRESS</strong> {{lecturer?.lecturerAddress}}</li>
+				  <li class="list-group-item"><strong>CONTACT</strong> {{lecturer?.lecturerContact}}</li>
+				</ul>
+			  </div>
+			</div>
+
+		</div>
+		<!-- Left panel-->
+		<div class="col-md-6 col-xs-12">
+
+			<div class="panel panel-default">
+			  <div class="panel-heading"><h5>Lecturer courses</h5></div>
+			  <div class="panel-body">
+			    <ul class="list-group">
+				  <li class="list-group-item" *ngFor="let course of courses">
+				  <strong>
+				  <a routerLink="/courses/detail/{{course?.course.id}}" style="cursor: pointer">{{course?.course.title}}</a>
+				  </strong>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+
+		</div>
+	</div>
+
+</div>

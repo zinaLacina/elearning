@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Students list</h4>
+                    <p class="category">Only the activated students
+                        <a class="btn btn-md btn-primary pull-right" routerLink="/student/addstudent">
+                            <i class="fa fa-plus"></i>Add new Student
+                        </a>
+                    </p>
+                    
+                </div>
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-striped table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>
+                                    <input type="checkbox" (change)="updateSelected($event.target.checked)" />
+                                </th>
+                                <th>NUMBER</th>
+                                <th>NAME</th>
+                                <th>ADDRESS</th>
+                                <th>CONTACT</th>
+                                <th>NATIONALITY</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor = "let student of studentList">
+                                <td>
+                                    <input hidden="hidden" name="id" />
+                                    <input type="checkbox" [checked]="allChecked" (change)="updateRemoveCourseList($event.target.checked, student)" />
+                                </td>
+                                <td><a (click)="onSelect(student)" style="cursor:pointer">{{student.student_number}}</a></td>
+                                <td>{{student.studentName}}</td>
+                                <td>{{student.studentAddress}}</td>
+                                <td>{{student.studentContact}}</td>
+                                <td>{{student.studentNationality}}</td>
+                                <td>
+                                    <button class="btn btn-xs btn-danger" value="delete" (click)="delete(student)" >
+                                    <span class="fa fa-times"></span></button>
+                                    <button class="btn btn-xs btn-warning" (click)="onSelectEdit(student)">
+                                    <i class="fa fa-edit"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <button class="btn btn-danger" id="deleteSelected" (click)="removeSelectedCourses()" [disabled]="!allChecked">Delete Selected</button>
+            </div>
+        </div>
+    </div>
+</div>

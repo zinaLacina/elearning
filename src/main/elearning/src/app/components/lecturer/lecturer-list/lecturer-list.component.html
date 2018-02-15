@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Lecturers list</h4>
+                    <p class="category">Only the activated lecturers
+                        <a class="btn btn-md btn-primary pull-right" routerLink="/lecturer/addlecturer">
+                            <i class="fa fa-plus"></i>Add new lecturer
+                        </a>
+                    </p>
+                    
+                </div>
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-striped table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>
+                                    <input type="checkbox" (change)="updateSelected($event.target.checked)" />
+                                </th>
+                                <th>NAME</th>
+                                <th>TITLE</th>
+                                <th>LAB</th>
+                                <th>ADDRESS</th>
+                                <th>CONTACT</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor = "let lecturer of lecturerList">
+                                <td>
+                                    <input hidden="hidden" name="id" />
+                                    <input type="checkbox" [checked]="allChecked" (change)="updateRemoveCourseList($event.target.checked, lecturer)" />
+                                </td>
+                                <td><a (click)="onSelect(lecturer)" style="cursor:pointer">{{lecturer.lecturerName}}</a></td>
+                                <td>{{lecturer?.title.titleName}}</td>
+                                <td>{{lecturer.lecturerLab}}</td>
+                                <td>{{lecturer.lecturerAddress}}</td>                           
+                                <td>{{lecturer.lecturerContact}}</td>
+                                <td>
+                                    <button class="btn btn-xs btn-danger" value="delete" (click)="delete(lecturer)" >
+                                    <span class="fa fa-times"></span></button>
+                                    <button class="btn btn-xs btn-warning" (click)="onSelectEdit(lecturer)">
+                                    <i class="fa fa-edit"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <button class="btn btn-danger" id="deleteSelected" (click)="removeSelectedLecturers()" [disabled]="!allChecked">Delete Selected</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div>
+	<div style="margin-top: 20px;">
+		<a routerLink="/courses"><i class="fa fa-long-arrow-left"></i> Go Back</a>
+		<span> / </span>
+		<a (click)="onSelect(course)" style="cursor: pointer">Edit</a>
+
+	</div>
+	{{course?.course.title}}
+	<div class="row">
+		<div class="col-md-6 col-xs-12">
+
+			<div class="panel panel-default">
+			  <div class="panel-heading"><h5>Lecturer</h5></div>
+			  <div class="panel-body">
+			    <img [src]="'http://localhost:8080/image/lecturer/defaultuser.png'" class="img-responsive" />
+			    <ul class="list-group">
+				  <li class="list-group-item"><strong>NOM:</strong> {{course?.lecturer.lecturerName}}</li>
+				  <li class="list-group-item"><strong>TITLE:</strong> {{course?.lecturer.title.titleName}}</li>
+				  <li class="list-group-item"><strong>LAB NAME:</strong> {{course?.lecturer.lecturerLab}}</li>
+				  <li class="list-group-item"><strong>ADDRESS</strong> {{course?.lecturer.lecturerAddress}}</li>
+				  <li class="list-group-item"><strong>CONTACT</strong> {{course?.lecturer.lecturerContact}}</li>
+				</ul>
+			  </div>
+			</div>
+
+		</div>
+		<!-- Left panel-->
+		<div class="col-md-6 col-xs-12">
+
+			<div class="panel panel-default">
+			  <div class="panel-heading"><h5>Course Detail</h5></div>
+			  <div class="panel-body">
+			    <ul class="list-group">
+				  <li class="list-group-item"><strong>CODE:</strong> {{course?.course.courseCode}}</li>
+				  <li class="list-group-item"><strong>NAME:</strong> {{course?.course.title}}</li>
+				  <li class="list-group-item"><strong>CREDIT:</strong> {{course?.course.credit}}</li>
+				  <li class="list-group-item"><strong>LEVEL:</strong> {{course?.course.level.name}}</li>
+				  <li class="list-group-item"><strong>SEMESTER:</strong> {{course?.semester.semesterName}}</li>
+				  <li class="list-group-item">
+				  	<strong>DATE:</strong> {{weeks[course?.weekDelivery-1]}} - 
+				  	{{slots[course?.timeSlot-1]}}
+				  </li>
+				</ul>
+			  </div>
+			</div>
+
+			<div class="panel panel-default">
+			  <div class="panel-heading"><h5>Course Classroom</h5></div>
+			  <div class="panel-body">
+			    <ul class="list-group">
+				  <li class="list-group-item"><strong>NAME:</strong> {{course?.classroom.classroomName}}</li>
+				  <li class="list-group-item"><strong>FLOOR:</strong> {{course?.classroom.floorNumber}}</li>
+				</ul>
+			  </div>
+			</div>
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+			  <div class="panel-heading"><h5>Participants</h5></div>
+			  <div class="panel-body">
+			    <ul class="list-group">
+				  <li class="list-group-item"></li>
+				</ul>
+			  </div>
+			</div>
+		</div>
+	</div>
+
+</div>
